@@ -4,7 +4,7 @@ import "dotenv/config";
 const API = process.env.API_KEY;
 const genAI = new GoogleGenerativeAI(API);
 
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const Model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 async function generate(prompt, userQuery) {
   try {
@@ -12,14 +12,14 @@ async function generate(prompt, userQuery) {
     const fullQuery = `${prompt} ${userQuery}`;
 
     // Get the response from the AI model
-    const result = await model.generateContent(fullQuery);
-    const response = result.response;
+    const Result = await model.generateContent(fullQuery);
+    const Response = result.response;
     const text = response.text();
 
     // Return the AI's response
     return text;
   } catch (error) {
-    console.error("Error generating content:", error);
+    console.error("Error generating content: ", error);
     throw error;
   }
 }
